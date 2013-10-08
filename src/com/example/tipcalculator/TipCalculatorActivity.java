@@ -15,28 +15,28 @@ public class TipCalculatorActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tip_calculator);
-		
+
 		final Button btnCalculate10 = (Button) findViewById(R.id.btnCalculate10);
 		final Button btnCalculate15 = (Button) findViewById(R.id.btnCalculate15);
 		final Button btnCalculate20 = (Button) findViewById(R.id.btnCalculate20);
-		
+
 		btnCalculate10.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                calculateTip(10);
-            }
-        });
-		
+			public void onClick(View v) {
+				calculateTip(10);
+			}
+		});
+
 		btnCalculate15.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                calculateTip(15);
-            }
-        });
-		
+			public void onClick(View v) {
+				calculateTip(15);
+			}
+		});
+
 		btnCalculate20.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                calculateTip(20);
-            }
-        });
+			public void onClick(View v) {
+				calculateTip(20);
+			}
+		});
 	}
 
 	@Override
@@ -45,18 +45,18 @@ public class TipCalculatorActivity extends Activity {
 		getMenuInflater().inflate(R.menu.tip_calculator, menu);
 		return true;
 	}
-	
-	public void calculateTip(int percent){
+
+	protected void calculateTip(float percent){
 		EditText textViewResult = (EditText) findViewById(R.id.textViewResult);
 		EditText editTextTotalBill = (EditText) findViewById(R.id.editTextTotalBill);
-		
+
 		String value = textViewResult.getText().toString();
 		float val = Float.parseFloat(value);
 		val = (float) percent/100 * val;
 		editTextTotalBill.setText(String.valueOf(val));
-		
+
 		InputMethodManager imm = (InputMethodManager)getSystemService(
-			      Context.INPUT_METHOD_SERVICE);
+				Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(textViewResult.getWindowToken(), 0);
 	}
 }
